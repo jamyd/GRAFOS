@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Grafos</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="animated-bg"></div>
+    <header class="bg-gradient p-4 text-center text-white">
+        <h1 class="display-4">Grafos</h1>
+        <nav class="mb-3">
+            <ul class="nav nav-pills justify-content-center gap-2">
+                <li class="nav-item"><a class="nav-link" href="#post1">Introducción a los Grafos</a></li>
+                <li class="nav-item"><a class="nav-link" href="#post2">Representación de Grafos</a></li>
+                <li class="nav-item"><a class="nav-link" href="#post3">Algoritmos de Recorrido</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="container py-4">
+        <div class="row g-4">
+            <div class="col-12 col-lg-6">
+                <article id="post1" class="card shadow">
+                    <div class="card-body">
+                        <h2 class="card-title">Introducción a los Grafos: Nodos, Aristas y Tipos</h2>
+                        <p>Un <strong>grafo</strong> es una estructura de datos compuesta por <strong>nodos</strong> (también llamados vértices) y <strong>aristas</strong> (o ejes) que conectan pares de nodos. Los grafos se utilizan para modelar relaciones y conexiones en diversos campos como informática, matemáticas y ciencias sociales.</p>
+                        <ul>
+                            <li><strong>Nodos (Vértices):</strong> Elementos individuales del grafo. Ejemplo: personas en una red social.</li>
+                            <li><strong>Aristas (Ejes):</strong> Conexiones entre los nodos. Ejemplo: amistad entre personas.</li>
+                            <li><strong>Tipos de grafos:</strong>
+                                <ul>
+                                    <li><strong>Dirigidos:</strong> Las conexiones tienen dirección (como seguidores en Twitter).</li>
+                                    <li><strong>No Dirigidos:</strong> Las conexiones son bidireccionales (amistad en Facebook).</li>
+                                    <li><strong>Ponderados:</strong> Las conexiones tienen un valor o peso (distancia entre ciudades).</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <h3>Ejemplo visual: Grafo no dirigido con 5 nodos</h3>
+                            <!-- Ejemplo visual eliminado -->
+                        <button class="btn btn-info mt-3" onclick="toggleGrafoInfo()">Más información</button>
+                        <div id="grafo-info" class="alert alert-secondary mt-2" style="display:none;">
+                            <strong>¿Sabías?</strong> Los grafos pueden ser cíclicos (con ciclos) o acíclicos (sin ciclos). Los grafos acíclicos dirigidos (DAG) se usan en programación y bases de datos.
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div class="col-12 col-lg-6">
+                <article id="post2" class="card shadow">
+                    <div class="card-body">
+                        <h2 class="card-title">Representación de Grafos</h2>
+                        <p>Existen dos formas principales de representar un grafo en la memoria de una computadora:</p>
+                        <ul>
+                            <li><strong>Lista de Adyacencia:</strong> Eficiente en espacio para grafos dispersos. <button class="btn btn-primary btn-sm" onclick="showAdjList()">Ver ejemplo</button></li>
+                            <li><strong>Matriz de Adyacencia:</strong> Eficiente en tiempo para consultar aristas. <button class="btn btn-primary btn-sm" onclick="showAdjMatrix()">Ver ejemplo</button></li>
+                        </ul>
+                        <div class="alert alert-info mt-2">
+                            <strong>¿Cuál usar?</strong> Si el grafo tiene pocos enlaces, la lista de adyacencia ahorra memoria. Si necesitas saber rápido si hay conexión entre dos nodos, la matriz es mejor.
+                        </div>
+                        <h3>Ejemplo visual: Representaciones para el mismo grafo</h3>
+                        <div id="representaciones-grafo" class="mb-3"></div>
+                        <img src="img/matriz-adyacencia.png" alt="Ejemplo matriz de adyacencia" class="img-fluid rounded shadow" />
+                    </div>
+                </article>
+            </div>
+            <div class="col-12">
+                <article id="post3" class="card shadow">
+                    <div class="card-body">
+                        <h2 class="card-title">Algoritmos Fundamentales de Recorrido</h2>
+                        <p>Dos algoritmos esenciales para recorrer grafos son:</p>
+                        <ul>
+                            <li><strong>Búsqueda en Amplitud (BFS):</strong> Breadth-First Search. <button class="btn btn-success btn-sm" onclick="runBFS()">Simular BFS</button></li>
+                            <li><strong>Búsqueda en Profundidad (DFS):</strong> Depth-First Search. <button class="btn btn-success btn-sm" onclick="runDFS()">Simular DFS</button></li>
+                        </ul>
+                        <div class="alert alert-warning mt-2">
+                            <strong>BFS</strong> explora primero los vecinos más cercanos.<br>
+                            <strong>DFS</strong> explora lo más profundo posible antes de retroceder.
+                        </div>
+                        <div id="algoritmos-grafo" class="mb-3"></div>
+                        <div id="algoritmo-resultado" class="alert alert-secondary" style="display:none; min-height:40px;"></div>
+                        <!-- Ejemplo BFS eliminado -->
+                    </div>
+                </article>
+            </div>
+        </div>
+    </main>
+    <footer class="text-center p-4 bg-dark text-white">
+        <p>© 2025 Blog sobre Grafos. Todos los derechos reservados.</p>
+        <div class="d-flex justify-content-center align-items-center gap-2 mt-2">
+            <button class="btn btn-secondary" onclick="toggleTheme()">Tema claro/oscuro</button>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Ocultar resultado al cargar
+        window.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('algoritmo-resultado').style.display = 'none';
+        });
+    </script>
+</body>
+</html>
